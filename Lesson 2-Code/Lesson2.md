@@ -36,7 +36,7 @@ export {sayHi,sayBye};
 ```
 __***Node That these are comes under named export not default export as we learnt in leasson 1__
 
-## `Import*`
+# `Import*`
 Usually, we put a list of what to import in curly braces `import {...}`, like this:
 ```javascript
 //📁 main.js
