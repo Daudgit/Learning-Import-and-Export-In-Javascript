@@ -59,6 +59,40 @@ Well, there are few reasons.
 - Explicitly listing what to import gives shorter names: `sayHi()` instead of `say.sayHi()`.
 - Explicit list of imports gives better overview of the code structure: what is used and where. It makes code support and refactoring easier.
 
+# `Import as` and `Export as`
+## `Import as`
+we can also use `as` to import under different names.
+For instance, let’s import `sayHi` into the local variable as `hi` , and import `sayBye` as `bye`:
+```javascript
+// 📁 main.js
+import {sayHi as hi, sayBye as bye} from './say.js';
+
+hi('John'); // Hello, John!
+bye('John'); // Bye, John!
+```
+
+## `Export as`
+The similar syntax exists for `export`.
+
+Let’s export functions as `hi` and `bye`:
+```javascript
+// 📁 say.js
+...
+export {sayHi as hi, sayBye as bye};
+```
+Now `hi` and `bye` are official names for outsiders, to be used in imports:
+```javascript
+// 📁 main.js
+import * as say from './say.js';
+
+say.hi('John'); // Hello, John!
+say.bye('John'); // Bye, John!
+```
+
+
+
+
+
 
 
 
