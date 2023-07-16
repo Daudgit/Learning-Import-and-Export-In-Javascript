@@ -1,6 +1,6 @@
 
 
-```markdown
+
 # JavaScript Export and Import Directives
 
 In JavaScript, the `export` and `import` directives are used for working with modules. Modules help organize code into separate files, allowing you to split your codebase into manageable, reusable pieces. Here's a breakdown of these directives and their usage:
@@ -22,7 +22,7 @@ export function myFunction() {
 export class MyClass {
   // ...
 }
-```
+
 
 ### Default Export
 
