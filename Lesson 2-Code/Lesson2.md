@@ -53,6 +53,7 @@ say.sayHi('John');
 say.sayBye('John');
 ```
 But here you can see where i am importing everything using `*` then it is quiet difficult for me to understand.At first sight, “import everything” seems such a cool thing, short to write.
+
 _But why should we ever explicitly list what we need to import?_
 Well, there are few reasons.
 - Explicitly listing what to import gives shorter names: `sayHi()` instead of `say.sayHi()`.
