@@ -1,4 +1,4 @@
-Sure! Here's the content in a Markdown (`.md`) file format:
+
 
 ```markdown
 # JavaScript Export and Import Directives
