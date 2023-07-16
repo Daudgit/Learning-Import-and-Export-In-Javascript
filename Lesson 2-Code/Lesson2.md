@@ -124,5 +124,115 @@ new User('John');
 | `export class User {...}`    | `export default class User {...}` |
 | `import {User} from ...`     | `import User from ...`            |
 
+Technically, we may have both default and named exports in a single module, but in practice people usually don’t mix them. A module has either named exports or the default one.
+
+As there may be at most one default export per file, the exported entity may have no name.
+
+For instance, these are all perfectly valid default exports:
+```javascript
+export default class { // no class name
+  constructor() { ... }
+}
+```
+
+```javascript
+export default function(user) { // no function name
+  alert(`Hello, ${user}!`);
+}
+```
+
+```javascript
+// export a single value, without making a variable
+export default ['Jan', 'Feb', 'Mar','Apr', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+```
+
+__Not giving a name is fine__, because there is only one `export default` per file, so `import` without curly braces knows what to import.
+
+But, Without default, such an export would give an error:
+```javascript
+export class { // Error! (non-default export needs a name)
+  constructor() {}
+}
+```
+
+__*** So, be carefull when you export one entity per file and don't give any name then you should export it as a `default`__
+
+### The “default” name
+In some situations the `default` keyword is used to reference the default export.
+
+For example, to export a function separately from its definition:
+```javascript
+function sayHi(user) {
+  alert(`Hello, ${user}!`);
+}
+
+// same as if we added "export default" before the function
+export {sayHi as default};
+```
+Or, another situation, let’s say a module `user.js` exports one main `“default”` thing, and a few `named ones` (rarely the case, but it happens):
+```javascript
+// 📁 user.js
+export default class User {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+export function sayHi(user) {
+  alert(`Hello, ${user}!`);
+}
+```
+
+Here’s how to import the default export along with a named one:
+
+```javascript
+import {default as User, sayHi} from './user.js'
+new User('John')
+```
+And, finally, if importing everything `*` as an object, then the `default` property is exactly the default export:
+```javascript
+// 📁 main.js
+import * as user from './user.js';
+
+let User = user.default; // the default export
+new User('John');
+```
+
+### A Interesting thing to remember between named and default
+Named exports are `explicit`. They exactly name what they import, so we have that information from them; that’s a good thing.
+
+Named exports force us to use exactly the right name to import:
+
+```javascript
+import {User} from './user.js';
+// import {MyUser} won't work, the name must be {User}
+```
+
+…While for a default export, we always `choose the name when importing`:
+```javascript
+import User from './user.js'; // works
+import MyUser from './user.js'; // works too
+// could be import Anything... and it'll still work
+```
+
+__So team members may use different names to import the same thing, and that’s not good.
+
+Usually, to avoid that and keep the code consistent, there’s a rule that imported variables should correspond to file names, e.g:__
+```javascript
+import User from './user.js';
+import LoginForm from './loginForm.js';
+import func from '/path/to/func.js';
+...
+```
+
+Still, some teams consider it a serious drawback of default exports. So they prefer to always use named exports. Even if only a single thing is exported, it’s still exported under a name, without default.
+
+That also makes re-export (see below) a little bit easier.
+
+
+
+
+
+
 
 
