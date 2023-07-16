@@ -18,3 +18,19 @@ export function sayHi(user) {
 }
 // and also keep it in mind no semicolon is required after the function or class declaration.
 ```
+## `Export` Apart from declaration
+here we are exporting the variables, constant, class and functions after the declaration.
+```javascript
+functon sayHi(user){
+alert(`Hello, ${user}`);
+}
+
+functon sayBye(user){
+alert(`Bye, ${user}`);
+}
+
+  export {sayHi,sayBye};
+
+```
+__***Node That these are comes under named export not default export as we learnt in leasson 1__
+
