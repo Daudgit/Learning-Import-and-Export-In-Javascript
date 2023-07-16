@@ -45,6 +45,20 @@ sayHi('John'); // Hello, John!
 sayBye('John'); // Bye, John!
 ```
 But if there’s a lot to import, we can import everything as an object using `import * as <obj>`, for instance:
+```javascript
+// 📁 main.js
+import * as say from './say.js';
+
+say.sayHi('John');
+say.sayBye('John');
+```
+But here you can see where i am importing everything using `*` then it is quiet difficult for me to understand.At first sight, “import everything” seems such a cool thing, short to write.
+_But why should we ever explicitly list what we need to import?_
+Well, there are few reasons.
+- Explicitly listing what to import gives shorter names: sayHi() instead of say.sayHi().
+- Explicit list of imports gives better overview of the code structure: what is used and where. It makes code support and refactoring easier.
+
+
 
 
 
