@@ -21,6 +21,8 @@ export function sayHi(user) {
 ## `Export` Apart from declaration
 here we are exporting the variables, constant, class and functions after the declaration.
 ```javascript
+//📁say.js
+
 functon sayHi(user){
 alert(`Hello, ${user}`);
 }
@@ -29,8 +31,20 @@ functon sayBye(user){
 alert(`Bye, ${user}`);
 }
 
-  export {sayHi,sayBye};
+export {sayHi,sayBye};
 
 ```
 __***Node That these are comes under named export not default export as we learnt in leasson 1__
+
+## `Import*`
+Usually, we put a list of what to import in curly braces `import {...}`, like this:
+```javascript
+//📁 main.js
+import {sayHi, sayBye} from './say.js';
+sayHi('John'); // Hello, John!
+sayBye('John'); // Bye, John!
+```
+But if there’s a lot to import, we can import everything as an object using `import * as <obj>`, for instance:
+
+
 
