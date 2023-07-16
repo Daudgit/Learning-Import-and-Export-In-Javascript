@@ -89,6 +89,27 @@ say.hi('John'); // Hello, John!
 say.bye('John'); // Bye, John!
 ```
 
+# Export default
+In practice, there are mainly two kinds of modules.
+- Modules that contain a library, pack of functions, like `say.js` above.
+- Modules that declare a single entity, e.g. a module `user.js` exports only `class User`.
+
+Mostly, the second approach is preferred, so that every “thing” resides in its own module.
+
+Naturally, that requires a lot of files, as everything wants its own module, but that’s not a problem at all. Actually, code navigation becomes easier if files are well-named and structured into folders.
+
+Modules provide a special `export default` (“the default export”) syntax to make the “one thing per module” way look better.
+
+Put `export default` before the entity to export:
+```javascript
+// 📁 user.js
+export default class User { // just add "default"
+  constructor(name) {
+    this.name = name;
+  }
+}
+```
+
 
 
 
